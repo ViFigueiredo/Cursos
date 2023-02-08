@@ -1,0 +1,78 @@
+# Instalação do Vue
+
+npm install -g @vue/cli (CLI) -> vue create hello-world
+npm init vue@latest (vite - recomendado)
+<script src="https://unpkg.com/vue@3/dist/vue.global.js"></script> (CDN)
+
+
+# Componentes
+
+É a forma que o framework relaciona um html/css/js com outro. Através de imports e exports de arquivos .vue. App.vue também é um componente, porém é tratado como um componente pai, e portanto fica fora de /components
+
+
+# Data Binding
+
+Utilizamos essa ferramenta quando queremos associar o valor de um conteúdo data(){} em uma tag html, utlizando essa notação {{variavel}}.
+
+
+# Atributos Dinâmicos
+
+Utilizamos essa ferramenta quando queremos associar o valor de um conteúdo data(){} em um atributo de tag html, utlizando essa notação v-bind:atributo="variavel" -> podemos resumir o "v-bind:" para somente ":".
+
+
+# Métodos
+
+São funções que podemos utilizar como se fosse variáveis para executar um conjunto de instruções.
+São declarados no escopo de <script>, seguido por methods>{} e utilizados como atributo de uma tag html. <tag @evento="método">
+
+
+# Lifecycle Hooks
+
+São métodos(funções) reservados e autoexecutados pela linguagem. São declarados e utlizados somente no escopo de um <script> e invocados da mesma forma que uma função normal. f(){} -> created, mounted, etc.
+
+
+# CSS Global e Scoped
+
+Global - Removemos o atributo "scoped" da tag <style> e toda estilização configurada vai se espalhar para todos os componentes, seja pai ou filho.
+
+Scoped - Funciona apenas no componente ao qual pertence o estilo. <style scoped>
+
+Obs.: Para nomes de tags, classes e id iguais, o vue respeitará a especificidade. É adicionado um tag-data ao DOM para diferenciar as estilizações.
+
+
+# Diretivas Condicionais V-if / V-else / V-show
+
+Utilizamos no elemento tag[html] que será testado certa condição. [Ver exemplo da aula 08]
+
+Obs.: V-if para V-show é que o primeiro não renderiza o elemento html no DOM, já o segundo sim, porém, escondido na página renderizada.
+
+Obs.: V-if requer maior processamento de dados.
+
+
+# Diretivas V-for
+
+Utilizamos no elemento tag[html] que queremos repetir. [Ver exemplo da aula 12]
+
+# Eventos
+
+São funções reservadas da linguagem que recebem métodos para executar um conjunto de instruções. Sua notação é seguida de "@" seguida pelo nome da função reservada da linguagem, p.e, @click, @hover, @focus... [Component Form, aula 13]
+São declarados no escopo de <template>, numa tag html. <tag @click>
+
+# Múltiplos Eventos
+
+Basta adicionar , na chamado do evento. [Aula 14, componente ]
+
+
+# Reutilização de componentes
+
+Cada componente pode ser utilizado em qualquer lugar do projeto, e seu funcionamento possui resultados diferentes.
+
+
+# Props
+
+Os componentes podem receber dados. Esses dados são passados como valores de data() ou hardcode do componente pai para o componente alvo. Declaramos e recebemos essas informações como array/obj no props:{} do componente filho.
+
+
+# $emit
+
+Possibilidade de ouvir um evento de um componente filho em um componente pai. Com isso, podemos ativar comportamentos (métodos) no componente pai. O evento deve ser registrado no componente. É preciso definir o que será feito com a ativação do evento na chamada do componente.

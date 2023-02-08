@@ -1,0 +1,12 @@
+{
+  "compilerOptions": {
+    "baseUrl": "./curso-gratuito-nuxtjs2",
+    "paths": {
+      "~/*": ["./*"],
+      "@/*": ["./*"],
+      "~~/*": ["./*"],
+      "@@/*": ["./*"]
+    }
+  },
+  "exclude": ["node_modules", ".nuxt", "dist"]
+}

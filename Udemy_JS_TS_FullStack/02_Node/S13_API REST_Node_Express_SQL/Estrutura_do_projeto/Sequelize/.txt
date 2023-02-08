@@ -1,0 +1,55 @@
+
+https://sequelize.org/docs/v6/other-topics/migrations/
+
+# Conceitos
+Realiza todos os tratamentos e execução para o banco de dados
+
+# Instalação de variáveis de ambiente
+npm i dotenv
+
+# Criar arquivo de conexão de banco em "/.env"
+
+# Importar dotenv para o projeto (app.js)
+import dotenv from 'dotenv';
+dotenv.config();
+
+# Instalação do Sequelize
+npm i sequelize
+npm i -D sequelize-cli
+
+# Instalação do SQL
+Neste projeto foi utilizado WSL2 + Docker + mariaDB
+https://github.com/ViFigueiredo/WSL2_Docker_MariaDB
+
+# Criação de src/database/migrations com sequelize (não modifica nada no banco, apenas cria um ordem de execução - migration.js)
+npx sequelize migration:create --name=<nome da migration>
+
+# Execução de migrations
+npx sequelize db:migrate
+
+# Reverte a última migration executada
+npx sequelize db:migrate:undo
+
+# Em casos de validação de dados, o Sequelize já possui o módulo "validator" integrado
+
+# Instalação do bcript
+npm i bcryptjs
+
+# Cração de src/database/seeds -> Insere dados na tabela
+npx sequelize seed:generate --name criar-usuarios
+
+# Execução de seeds
+npx sequelize db:seed:all
+
+# Salvando arquivos na base de dados
+Jamais salvamos o na base de dados, ao invés disso fazemos as informações de referências
+
+# Referência de dados de arquivos na base de dados
+
+onDelete
+onUpdate
+
+'CASCADE', // se o registro pai for deletado, o filho também será
+'RESTRICT', // significa que qualquer tentativa de apagar ou atualizar o registro pai vai falhar, lançando um erro
+'NO ACTION', // sem ações - significa que o SQL não vai realizar ações por você, porém não poderá apagar ou atualizar a primary key do registro pai, nem conseguirá alterar a foreign key do registro filho caso a primary key do registro pai ainda não tiver sido atualizada
+'SET NULL', // se alterar ou apagar a primary key do registro pai, a foreign key do registro filho será NULL

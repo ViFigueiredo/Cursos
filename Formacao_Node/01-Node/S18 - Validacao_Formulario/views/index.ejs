@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+
+  <!-- reCaptcha -->
+  <script>
+    function onSubmit(token) {
+      document.getElementById("demo-form").submit();
+    }
+  </script>
+</head>
+
+<body>
+
+  <form id="demo-form" method="POST" action="/form">
+    <input type="email" name="email" id="email" value="<%= email %>" placeholder="email"> <%= emailError %> <br>
+    <input type="text" name="nome" id="nome" value="<%= nome %>" placeholder="nome"> <%= nomeError %> <br>
+    <input type="number" name="pontos" id="pontos" value="<%= pontos %>" placeholder="pontos"> <%= pontosError %> <br>
+    <button class="g-recaptcha" data-sitekey="<%= recaptcha %>" data-callback='onSubmit' data-action='submit' type="submit">Enviar</button>
+  </form>
+
+  <!-- reCaptcha -->
+  <script src="https://www.google.com/recaptcha/api.js"></script>
+</body>
+
+</html>
