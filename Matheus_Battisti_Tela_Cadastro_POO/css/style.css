@@ -11,12 +11,8 @@
 input,
 label {
     display: block;
-    width: 100%;
-}
-
-input:focus,
-label:focus {
     outline: none;
+    width: 100%;
 }
 
 a {
@@ -27,14 +23,15 @@ body {
     padding-top: 5vh;
     /* 5% da tela */
     background-image: url('../img/bg-register-page.jpg');
-    background-size: auto;
+    background-size: cover;
     background-position-y: -150px;
 }
 
 /* form */
 #main-container {
     width: 500px;
-    margin: 0 auto;
+    margin-right: auto;
+    margin-left: auto;
     background-color: #fff;
     border-radius: 10px;
     padding: 25px;
@@ -57,11 +54,12 @@ form {
     flex: 1 1 100%;
     /* grow shrink width */
     position: relative;
-}
+  }
 
-.half-box {
+  .half-box {
     flex: 1 1 45%;
     /* grow shrink width */
+    position: relative;
 }
 
 .spacing {
@@ -105,9 +103,9 @@ input[type='submit'] {
 /* validações */
 .error-validation {
     color: #ff1a1a;
-    position: relative;
+    position: absolute;
     top: 57px;
-    font-size: .8rem;
+    font-size: 12rem;
 }
 
 .template {
