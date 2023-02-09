@@ -1,10 +1,11 @@
 <template>
-  <div id="app">
-    {{ $store.state.user.first_name }} <br>
+  <div id="app" class="container mt-5">
+    {{ $store.state.user.first_name }} <br><br>
 
-    <input type="text" name="" id="" v-model="myName">
+    <label for=""> Primeiro Nome </label><br>
+    <input class="form-control" type="text" name="" id="" v-model="myName"><br>
 
-    <button @click.prevent.stop="saveName"> Save </button>
+    <button class="btn btn-primary" @click.prevent.stop="saveName"> Save </button>
   </div>
 </template>
 
@@ -32,12 +33,5 @@ export default {
 </script>
 
 <style>
-#app {
-  font-family: Avenir, Helvetica, Arial, sans-serif;
-  -webkit-font-smoothing: antialiased;
-  -moz-osx-font-smoothing: grayscale;
-  text-align: center;
-  color: #2c3e50;
-  margin-top: 60px;
-}
+
 </style>
