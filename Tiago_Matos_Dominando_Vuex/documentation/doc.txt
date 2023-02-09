@@ -1,0 +1,19 @@
+# O que é?
+É um gerenciador de estado do VueJS.
+
+# O que é um gerenciador de estado?
+Consultar imagem 01.png
+
+# Por que usar o Vuex sendo que o próprio componente é seu gerenciador de estado?
+Por que nem sempre temos componentes pais e filhos que podem compartilhar o seu data() entre si. Desta forma precisamos de um intermediário que consiga disponilizar e gerenciar o estado de um componente pai ou filho com todos os componentes existentes da aplicação. Em outras palavras, é como um "banco de dados" local não persistente do frontend de uma aplicação. Por fim, centraliza as informações de de tal maneira que temos uma arquitetura mais linear entre a comunicação dos componentes.
+
+# Quando utilizar Vuex?
+Se precisar compartilhar dados para vários componentes (não parentes) da sua aplicação.
+
+# Utilizando Vuex
+.$store.state -> state
+.$store.commit() -> mutation
+.$store.dispatch() ->  action
+
+# Importante
+Em casos onde temos muita repetição de .dispatch(), é mais conveniente pular a etapa de action e manipular o state diretamente nas mutations.
