@@ -12,7 +12,10 @@
 
 ## About <a name = "about"></a>
 
-Projeto prático realizado em https://www.youtube.com/watch?v=hXUQpiW9Tho&list=PLnDvRpP8Bnew4ZYLYp47sD52OHQfHNdGB&index=4
+Projeto prático realizado em:
+Parte 1- > <https://www.youtube.com/watch?v=hXUQpiW9Tho&list=PLnDvRpP8Bnew4ZYLYp47sD52OHQfHNdGB&index=4>
+
+Parte 2- > <https://www.youtube.com/watch?v=zJPuL5lU4qA&list=PLnDvRpP8Bnew4ZYLYp47sD52OHQfHNdGB&index=3>
 
 ## Getting Started <a name = "getting_started"></a>
 
