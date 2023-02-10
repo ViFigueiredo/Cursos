@@ -17,7 +17,7 @@
                 <button type="button" class="btn btn-sm btn-outline-secondary"
                   @click="addToCart(product)">Adicionar</button>
               </div>
-              <small class="text-muted">R$ {{ product.price.toFixed(2) }}</small>
+              <small class="text-muted">{{ showQty(product.id) }}</small>
             </div>
           </div>
         </div>
@@ -61,17 +61,14 @@ export default {
         {
           id: 1,
           title: 'Produto 1',
-          price: 899.90
         },
         {
           id: 2,
           title: 'Produto 2',
-          price: 3490.45
         },
         {
           id: 3,
           title: 'Produto 3',
-          price: 1245.97
         },
       ]
     }
@@ -109,6 +106,10 @@ export default {
     addToCart(product) {
       this.$store.commit('addProduct', product)
     },
+
+    showQty(id) {
+      return this.$store.state.cart.find(o => o.id === id)?.qty || 0
+    }
   }
 }
 </script>

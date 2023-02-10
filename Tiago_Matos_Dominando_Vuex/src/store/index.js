@@ -20,7 +20,13 @@ export default new Vuex.Store({
 
     /* Cart */
     addProduct(state, payload) {
-      state.cart.push(payload);
+      const existingProducts = state.cart.find((o) => o.id === payload.id);
+      if (existingProducts) {
+        existingProducts.qty += 1;
+      } else {
+        payload.qty = 1;
+        state.cart.push(payload);
+      }
     },
 
     /* User */
