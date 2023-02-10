@@ -4,6 +4,7 @@ import Vuex from "vuex";
 Vue.use(Vuex);
 
 export default new Vuex.Store({
+  strict: true, // não permite salvar dados diretamente no state fora de uma mutation
   state: {
     /* data */
     user: {
@@ -11,14 +12,25 @@ export default new Vuex.Store({
       last_name: "Snow",
       email: "jon@snow.com",
     },
+    cart: [],
   },
-  getters: {},
   mutations: {
     /* responsanvel por manipular o state (não podemos manipular o state diretamente) */
     /* sync */
 
+    /* Cart */
+    addProduct(state, payload) {
+      state.cart.push(payload);
+    },
+
+    /* User */
     saveFirstName(state, payload) {
-      state.user.first_name = payload
+      state.user.first_name = payload;
+      // console.log("state: ", state);
+      // console.log("payload mutation: ", payload);
+    },
+    saveLastName(state, payload) {
+      state.user.last_name = payload;
       // console.log("state: ", state);
       // console.log("payload mutation: ", payload);
     },
