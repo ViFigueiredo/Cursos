@@ -1,6 +1,13 @@
 <template>
   <div id="app" class="container mt-5">
 
+    <br>
+    <br>
+    <br>
+    <pre>
+      {{ $store.state.users }}
+    </pre>
+
     <div class="row">
       <div class="col" v-for="product in products" :key="product.id">
         <div class="card shadow-sm">
@@ -16,7 +23,7 @@
               <div class="btn-group">
                 <button type="button" class="btn btn-sm btn-outline-secondary"
                   @click="ADD_PRODUCT(product)">Adicionar</button>
-                <button type="button" class="btn btn-sm btn-outline-secondary"
+                <button  v-if="!!showQty(product.id)" type="button" class="btn btn-sm btn-outline-secondary"
                   @click="REMOVE_PRODUCT(product)">Remover</button>
               </div>
               <small v-if="!!showQty(product.id)" class="text-muted">{{ showQty(product.id) }}</small>

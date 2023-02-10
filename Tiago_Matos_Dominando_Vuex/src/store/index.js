@@ -59,5 +59,20 @@ export default createStore({
       return `${state.user.first_name} ${state.user.last_name}`;
     },
   },
-  modules: {},
+  modules: {
+    users: {
+      state: () => ({
+        first_name: "Dominando Vuex",
+      }),
+      mutations: {},
+      actions: {},
+      getters: {},
+    },
+    carrinho: {
+      state: () => ({}),
+      mutations: {},
+      actions: {},
+      getters: {},
+    },
+  },
 });
