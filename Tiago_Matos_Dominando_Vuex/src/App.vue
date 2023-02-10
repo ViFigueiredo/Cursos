@@ -26,7 +26,7 @@
 
     <br>
 
-    <pre> {{ store.state.cart }}</pre>
+    <pre> {{ $store.state.cart }}</pre>
 
     <br>
     <br>
