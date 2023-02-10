@@ -16,23 +16,29 @@ export default createStore({
     /* sync */
 
     /* Cart */
-    addProduct(state, payload) {
+    ADD_PRODUCT(state, payload) {
       const existingProducts = state.cart.find((o) => o.id === payload.id);
-      if (existingProducts) {
-        existingProducts.qty += 1;
+      if (existingProducts) return (existingProducts.qty += 1);
+      payload.qty = 1;
+      state.cart.push(payload);
+    },
+    REMOVE_PRODUCT(state, payload) {
+      const existingProducts = state.cart.find((o) => o.id === payload.id);
+      if (existingProducts && existingProducts.qty > 1) {
+        return (existingProducts.qty -= 1);
       } else {
-        payload.qty = 1;
-        state.cart.push(payload);
+        const idx = state.cart.findIndex((o) => o.id === payload.id);
+        state.cart.splice(idx);
       }
     },
 
     /* User */
-    saveFirstName(state, payload) {
+    SAVE_FIRST_NAME(state, payload) {
       state.user.first_name = payload;
       // console.log("state: ", state);
       // console.log("payload mutation: ", payload);
     },
-    saveLastName(state, payload) {
+    SAVE_LAST_NAME(state, payload) {
       state.user.last_name = payload;
       // console.log("state: ", state);
       // console.log("payload mutation: ", payload);
@@ -46,6 +52,11 @@ export default createStore({
       /* context -> puxar dados do state, mutations, etc */
       context.commit("saveFirstName", payload);
       // console.log("payload action: ", payload);
+    },
+  },
+  getters: {
+    fullName(state) {
+      return `${state.user.first_name} ${state.user.last_name}`;
     },
   },
   modules: {},

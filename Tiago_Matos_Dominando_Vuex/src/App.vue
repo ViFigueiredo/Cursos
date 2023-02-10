@@ -15,7 +15,9 @@
             <div class="d-flex justify-content-between align-items-center">
               <div class="btn-group">
                 <button type="button" class="btn btn-sm btn-outline-secondary"
-                  @click="addToCart(product)">Adicionar</button>
+                  @click="ADD_PRODUCT(product)">Adicionar</button>
+                <button type="button" class="btn btn-sm btn-outline-secondary"
+                  @click="REMOVE_PRODUCT(product)">Remover</button>
               </div>
               <small v-if="!!showQty(product.id)" class="text-muted">{{ showQty(product.id) }}</small>
             </div>
@@ -26,7 +28,9 @@
 
     <br>
 
-    <pre> {{ $store.state.cart }}</pre>
+    <pre> {{ cart }}</pre>
+
+    <pre> {{ user }}</pre>
 
     <br>
     <br>
@@ -36,7 +40,7 @@
     <!-- cenário 1: v-model chama o method{saveName} e salva os dados ao clicar no <button>save</button> -->
     <!-- cenário 2: v-model chama o computed{firstName / lastName} e salva os dados automaticamente-->
 
-    State -> {{ $store.state.user.first_name }} {{ $store.state.user.last_name }} <br><br>
+    State -> {{ fullName }} <br><br>
     <label for=""> Primeiro Nome </label><br>
     <input class="form-control" type="text" name="" id="" v-model="firstName"><br>
 
@@ -48,7 +52,8 @@
 </template>
 
 <script>
-
+/* importa o mapeanento do vuex */
+import { mapState, mapActions, mapMutations, mapGetters } from 'vuex'
 export default {
   name: 'App',
   components: {},
@@ -74,41 +79,50 @@ export default {
     }
   },
   computed: {
+    /* mapeando do vuex */
+    ...mapState({
+      user: state => state.user,
+      cart: state => state.cart,
+    }),
+    ...mapGetters(['fullName']),
+
     firstName: {
       get() {
         /* pega dados do vuex */
-        return this.$store.state.user.first_name
+        return this.user.first_name
       },
       set(value) {
         /* pega dados do input */
-        this.$store.commit('saveFirstName', value)
+        this.SAVE_FIRST_NAME(value)
       }
     },
     lastName: {
       get() {
-        return this.$store.state.user.last_name
+        return this.user.last_name
       },
       set(value) {
-        this.$store.commit('saveLastName', value)
+        this.SAVE_FIRST_NAME(value)
       }
-    }
+    },
   },
   methods: {
+    ...mapMutations(['ADD_PRODUCT', 'REMOVE_PRODUCT', 'SAVE_FIRST_NAME', 'SAVE_LAST_NAME']),
+    ...mapActions(['saveFirstName']),
     saveName() {
 
       /* action */
-      // this.$store.dispatch('saveFirstName', this.myName);
+      // this.saveFirstName(this.myName);
 
       /* mutation */
-      this.$store.commit('saveFirstName', this.myName);
+      this.SAVE_FIRST_NAME(this.myName); // sem uso
     },
 
-    addToCart(product) {
-      this.$store.commit('addProduct', product)
+    addToCart(product) { // sem uso
+      this.ADD_PRODUCT(product)
     },
 
     showQty(id) {
-      return this.$store.state.cart.find(o => o.id === id)?.qty || 0
+      return this.cart.find(o => o.id === id)?.qty || 0
     }
   }
 }

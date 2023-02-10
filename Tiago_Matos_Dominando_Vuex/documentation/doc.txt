@@ -15,5 +15,15 @@ Se precisar compartilhar dados para vários componentes (não parentes) da sua a
 .$store.commit() -> mutation
 .$store.dispatch() ->  action
 
-# Importante
+# Importante 1
 Em casos onde temos muita repetição de .dispatch(), é mais conveniente pular a etapa de action e manipular o state diretamente nas mutations.
+
+# Getters
+Semelhante a uma computed{} porém funciona na vuex e fica disponível em toda aplicação.
+
+# Mapeando vuex
+É possivel não utilizar $store fazendo o mapeamento das seguintes bibliotecas:
+mapState,
+mapMutations,
+mapActions,
+mapGetters
