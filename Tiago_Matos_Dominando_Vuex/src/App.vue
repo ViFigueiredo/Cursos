@@ -17,7 +17,7 @@
                 <button type="button" class="btn btn-sm btn-outline-secondary"
                   @click="addToCart(product)">Adicionar</button>
               </div>
-              <small class="text-muted">{{ showQty(product.id) }}</small>
+              <small v-if="!!showQty(product.id)" class="text-muted">{{ showQty(product.id) }}</small>
             </div>
           </div>
         </div>
