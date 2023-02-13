@@ -1,13 +1,6 @@
 <template>
   <div id="app" class="container mt-5">
 
-    <br>
-    <br>
-    <br>
-    <pre>
-      {{ $store.state.users }}
-    </pre>
-
     <div class="row">
       <div class="col" v-for="product in products" :key="product.id">
         <div class="card shadow-sm">
@@ -23,7 +16,7 @@
               <div class="btn-group">
                 <button type="button" class="btn btn-sm btn-outline-secondary"
                   @click="ADD_PRODUCT(product)">Adicionar</button>
-                <button  v-if="!!showQty(product.id)" type="button" class="btn btn-sm btn-outline-secondary"
+                <button v-if="!!showQty(product.id)" type="button" class="btn btn-sm btn-outline-secondary"
                   @click="REMOVE_PRODUCT(product)">Remover</button>
               </div>
               <small v-if="!!showQty(product.id)" class="text-muted">{{ showQty(product.id) }}</small>
@@ -34,27 +27,29 @@
     </div>
 
     <br>
-
-    <pre> {{ cart }}</pre>
-
-    <pre> {{ user }}</pre>
-
-    <br>
-    <br>
-    <br>
     <br>
 
-    <!-- cenário 1: v-model chama o method{saveName} e salva os dados ao clicar no <button>save</button> -->
-    <!-- cenário 2: v-model chama o computed{firstName / lastName} e salva os dados automaticamente-->
+    <pre> Carrinho: {{ cart }} </pre>
 
-    State -> {{ fullName }} <br><br>
-    <label for=""> Primeiro Nome </label><br>
-    <input class="form-control" type="text" name="" id="" v-model="firstName"><br>
+    <br>
 
-    <label for=""> Sobrenome </label><br>
-    <input class="form-control" type="text" name="" id="" v-model="lastName"><br>
+    <div>
+      <label for=""> Primeiro Nome </label><br>
+      <input class="form-control" type="text" name="" id="" v-model="firstName"><br>
 
-    <button class="btn btn-primary" @click.prevent.stop="saveName"> Save </button>
+      <label for=""> Sobrenome </label><br>
+      <input class="form-control" type="text" name="" id="" v-model="lastName"><br>
+
+      <button class="btn btn-primary" @click.prevent.stop="saveName"> Save </button>
+
+      <br>
+      <br>
+
+      State: {{ fullName }} <br><br>
+      <pre> Usuários {{ users }}</pre>
+      
+    </div>
+
   </div>
 </template>
 
@@ -88,7 +83,7 @@ export default {
   computed: {
     /* mapeando do vuex */
     ...mapState({
-      user: state => state.user,
+      users: state => state.users,
       cart: state => state.cart,
     }),
     ...mapGetters(['fullName']),
@@ -96,7 +91,7 @@ export default {
     firstName: {
       get() {
         /* pega dados do vuex */
-        return this.user.first_name
+        return this.users.first_name
       },
       set(value) {
         /* pega dados do input */
@@ -105,31 +100,19 @@ export default {
     },
     lastName: {
       get() {
-        return this.user.last_name
+        return this.users.last_name
       },
       set(value) {
-        this.SAVE_FIRST_NAME(value)
+        this.SAVE_LAST_NAME(value)
       }
     },
   },
   methods: {
     ...mapMutations(['ADD_PRODUCT', 'REMOVE_PRODUCT', 'SAVE_FIRST_NAME', 'SAVE_LAST_NAME']),
-    ...mapActions(['saveFirstName']),
-    saveName() {
-
-      /* action */
-      // this.saveFirstName(this.myName);
-
-      /* mutation */
-      this.SAVE_FIRST_NAME(this.myName); // sem uso
-    },
-
-    addToCart(product) { // sem uso
-      this.ADD_PRODUCT(product)
-    },
+    ...mapActions(['saveFirstName']), // sem uso
 
     showQty(id) {
-      return this.cart.find(o => o.id === id)?.qty || 0
+      return this.cart.content.find(o => o.id === id)?.qty || 0
     }
   }
 }
