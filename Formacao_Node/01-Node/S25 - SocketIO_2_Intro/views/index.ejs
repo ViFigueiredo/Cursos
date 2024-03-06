@@ -1,0 +1,50 @@
+\
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+</head>
+
+<body>
+    <input type="text" name="" id="palavra" oninput="enviar()" />
+    <button onclick="enviar()">Enviar</button>
+
+    <hr>
+
+    <p id="resultado"></p>
+</body>
+
+<script src="https://cdn.socket.io/4.6.0/socket.io.min.js"
+    integrity="sha384-c79GN5VsunZvi+Q/WObgk2in0CbZsHnjEqvFxC5DxHn9lTfNce2WW6h2pH6u/kF+"
+    crossorigin="anonymous"></script>
+
+<script>
+    const socket = io('http://localhost:3000');
+    socket.on('desconnect', () => {
+        console.log('Desconectado!');
+    })
+
+    /* enviando um evento para o servidor */
+    // emit(nome, evento)
+    socket.emit('boasvindas', { nome: 'Vinicius Figueiredo' });
+
+    /* recebendo um evento do servidor */
+    socket.on('resultado', (data) => {
+        console.log(data);
+
+        const p = document.getElementById('resultado');
+        p.innerHTML = data;
+    })
+
+    function enviar() {
+        const input = document.getElementById('palavra');
+        // console.log(input.value);
+        socket.emit('palavra', input.value);
+    }
+</script>
+
+</html>

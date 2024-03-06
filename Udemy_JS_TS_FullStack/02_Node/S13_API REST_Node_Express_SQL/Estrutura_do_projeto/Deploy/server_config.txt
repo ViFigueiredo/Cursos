@@ -1,0 +1,51 @@
+# Configurar ambiente local para Deploy
+
+1. Gerar chave SSH no terminal
+ssh-keygen -f ~/.ssh/cursojs -t rsa -b 4096
+
+2. Lista as chaves criadas
+ls ~/.ssh/<nome_da_chave>*
+
+3. Visualisar a chave pública
+ cat /home/$USER/.ssh/<nome_da_chave>.pub
+
+4. No Cloud, pesquisar pro Metadados e inserir a chave pública copiada
+
+5. No terminal, vamos entrar no Cloud
+ssh -i ~/.ssh/cursojs USER@IPADDRESS
+
+OU acessar via Browser
+
+6. Instalar e atualizar pacotes
+sudo apt update
+sudo apt upgrade
+cd ~
+curl -sL https://deb.nodesource.com/setup_14.x -o nodesource_setup.sh
+sudo bash nodesource_setup.sh
+sudo apt install nodejs
+
+7. Instalar e configurar o gerenciador de processador PM2 do NodeJS
+sudo npm i -g pm2
+pm2 start /home/<user>/<projeto>/server.js --name <nome_do _projeto>
+pm2 startup -> inicia junto com o servidor
+
+Comandos:
+pm2 start
+pm2 stop
+pm2 startup
+
+8. Instalar o servidor web NGINX
+sudo apt install nginx
+
+9. Criar o arquivo do proxy reverso conforme nginx.txt
+sudo nano /etc/nginx/sites-enabled/<nome_do_arquivo>
+
+10. Remover o arquivo padrão do nginx
+sudo rm /etc/nginx/sites-enabled/default
+
+11. Reiniciar o servidor web
+sudo service nginx restart
+OU
+sudo nginx -s reload
+
+ssh-keygen -t rsa -f ~/.ssh/cursojs -C dev

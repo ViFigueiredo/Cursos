@@ -1,0 +1,19 @@
+{
+    "sqltools.connections": [
+        {
+            "mssqlOptions": {
+                "appName": "SQLTools",
+                "useUTC": true,
+                "encrypt": false
+            },
+            "previewLimit": 50,
+            "server": "192.168.0.200\\sqlexpress",
+            "port": 1433,
+            "driver": "MSSQL",
+            "name": "Avantti",
+            "database": "db_dev_receita_federal",
+            "username": "dbAdmin",
+            "password": "Ctelecom2017"
+        }
+    ]
+}

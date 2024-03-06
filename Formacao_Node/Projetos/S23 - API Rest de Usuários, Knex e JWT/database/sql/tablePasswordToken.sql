@@ -1,0 +1,10 @@
+CREATE TABLE pwd_tokens (
+	id SERIAL NOT NULL,
+	token VARCHAR(255) NOT NULL,
+	user_id INT NOT NULL,
+	used INT NOT NULL,
+	PRIMARY KEY (id)
+);
+
+
+ALTER TABLE pwd_tokens ADD CONSTRAINT pwd_tokens_fk FOREIGN KEY (user_id) REFERENCES users(id) ON DELETE CASCADE ON UPDATE CASCADE;

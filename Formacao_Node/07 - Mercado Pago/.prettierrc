@@ -1,0 +1,5 @@
+printWidth: 100
+tabWidth: 4 # tab缩进2个空格
+semi: true # 末尾分号
+singleQuote: true # 单引号
+trailingComma: 'es5' # 尾随逗号

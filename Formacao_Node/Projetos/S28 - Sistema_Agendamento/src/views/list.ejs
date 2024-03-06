@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Listagem</title>
+
+  <style>
+    .flex {
+      display: flex;
+    }
+
+    .flex form {
+      margin-right: 15px;
+    }
+  </style>
+</head>
+
+<body>
+
+  <h1> Consultas: </h1>
+  <br>
+  <div class="flex">
+    <form action="/search" method="get">
+      <input type="search" name="search" id="search" placeholder="E-mail ou CPF">
+      <button type="submit"> Pesquisar </button>
+    </form>
+    <form action="/list" method="get">
+      <button type="submit"> Limpar </button>
+    </form>
+  </div>
+  <br>
+  <br>
+
+  <% list.forEach(obj => { %>
+  <h4> Título: <%= obj.description %></h4>
+  <h4> Paciente: <%= obj.name %></h4>
+  <h4> C.P.F.: <%= obj.cpf %> </h4>
+  <h4> E-mail: <%= obj.email %> </h4>
+
+  <% if(!obj.finished){ %>
+  <form action="/finish" method="post">
+    <input type="hidden" name="id" value="<%= obj._id %>">
+    <button type="submit"> Finalizar consulta! </button>
+  </form>
+  <% } %>
+
+  <hr>
+  <% }) %>
+
+</body>
+
+</html>

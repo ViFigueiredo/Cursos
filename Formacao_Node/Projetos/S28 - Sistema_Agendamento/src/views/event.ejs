@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Consulta</title>
+</head>
+
+<body>
+
+  <h1> Consulta: <%= description %>
+  </h1>
+  <hr>
+  <h4> Paciente: <%= name %>
+  </h4>
+  <h4> C.P.F.: <%= cpf %>
+  </h4>
+  <h4> E-mail: <%= email %>
+  </h4>
+  <hr>
+  <% if(!finished){ %>
+  <form action="/finish" method="post">
+    <input type="hidden" name="id" value="<%= _id %>">
+    <button type="submit"> Finalizar consulta! </button>
+  </form>
+  <% } %>
+
+</body>
+
+</html>

@@ -1,0 +1,15 @@
+# Deploy da API no Google Cloud
+
+1. Realizar a build do sucrase, uma vez que nodemon não funciona em produção
+Adicionar scripts no "package.json":
+
+"build": "sucrase ./src -d ./dist --transforms imports"
+(faz a transpilação da pasta ./src para ./dist)
+
+"start": "node dist/server.js"
+
+2. Executar a transpilação
+npm run build
+
+3. Agora, para executaro servidor rodamos:
+npm start
